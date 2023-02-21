@@ -1,0 +1,72 @@
+hombre("gregorio").
+hombre("daniel_1").
+hombre("luis").
+hombre("miguel").
+hombre("alfredo").
+hombre("arturo").
+hombre("armando").
+hombre("angel").
+hombre("antonio").
+hombre("sergio").
+hombre("eduardo").
+hombre("daniel_2").
+hombre("emmanuel").
+hombre("alejandro").
+
+mujer("elisa").
+mujer("cecilia").
+mujer("sandra").
+mujer("ana").
+mujer("elizabeth").
+mujer("gloria").
+mujer("angeles").
+mujer("andrea").
+mujer("paola").
+mujer("arely").
+mujer("amelia").
+mujer("jessica").
+mujer("marilyn").
+
+progenitor("gregorio", "luis").
+progenitor("gregorio", "miguel").
+progenitor("gregorio", "alfredo").
+progenitor("daniel_1", "elizabeth").
+progenitor("daniel_1", "arturo").
+progenitor("daniel_1", "armando").
+progenitor("luis", "paola").
+progenitor("miguel", "angel").
+progenitor("miguel", "antonio").
+progenitor("miguel", "andrea").
+progenitor("alfredo", "sergio").
+progenitor("alfredo", "jessica").
+progenitor("alfredo", "eduardo").
+progenitor("armando", "emmanuel").
+progenitor("armando", "alejandro").
+progenitor("arturo", "marilyn").
+progenitor("arturo", "daniel_2").
+progenitor("sergio", "amelia").
+progenitor("elisa", "luis").
+progenitor("elisa", "miguel").
+progenitor("elisa", "alfredo").
+progenitor("cecilia", "elizabeth").
+progenitor("cecilia", "arturo").
+progenitor("cecilia", "armando").
+progenitor("sandra", "paola").
+progenitor("ana", "angel").
+progenitor("ana", "antonio").
+progenitor("ana", "andrea").
+progenitor("elizabeth", "sergio").
+progenitor("elizabeth", "jessica").
+progenitor("elizabeth", "eduardo").
+progenitor("arely", "amelia").
+progenitor("gloria", "marilyn").
+progenitor("gloria", "daniel_2").
+progenitor("angeles", "emmanuel").
+progenitor("angeles", "alejandro").
+
+%reglas
+hijode(A,B,C) :- progenitor(hombre(B),A), progenitor(mujer(C),A).
+abuelode(A,B) :- progenitor(hombre(B),C), progenitor(C,mujer(B)).
+familiarde(A,B) :- padrede(A,B).
+familiarde(A,B) :- hijode(A,B).
+familiarde(A,B) :- hermanode(A,B).
